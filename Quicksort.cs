@@ -12,7 +12,7 @@ namespace Task_Parallelism_Excercise_3
         private readonly int maxParallelDepth;
         internal Quicksort(int arraySize, int maxDepth)
         {
-            this.maxParallelDepth = maxDepth;
+            maxParallelDepth = maxDepth;
             int[] unsortedArray = new int[arraySize];
             Random random = new Random();
 
@@ -32,7 +32,7 @@ namespace Task_Parallelism_Excercise_3
             long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
             double elapsedSeconds = stopwatch.Elapsed.TotalSeconds;
 
-            Console.WriteLine($"Quicksort took {elapsedMilliseconds} milliseconds ({elapsedSeconds} seconds) with size {arraySize}.");
+            Console.WriteLine($"Quicksort took {elapsedMilliseconds} milliseconds ({elapsedSeconds} seconds) with size {arraySize} and max dept {maxParallelDepth}.");
 
         }
 

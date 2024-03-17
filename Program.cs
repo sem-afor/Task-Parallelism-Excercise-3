@@ -24,11 +24,13 @@ class Program
         new Quicksort(1000000, 3);
         new Quicksort(1000000, 4);
         new Quicksort(1000000, 5);
-        new Quicksort(1000000, 6);
-        new Quicksort(1000000, 7);
-        new Quicksort(1000000, 8);
-        new Quicksort(1000000, 9);
-        new Quicksort(1000000, 10);
+
+        new Quicksort(1400000, 0);
+        new Quicksort(1400000, 1);
+        new Quicksort(1400000, 2);
+        new Quicksort(1400000, 3);
+        new Quicksort(1400000, 4);
+        new Quicksort(1400000, 5);
 
 
         // 4500000 bis 9000000
