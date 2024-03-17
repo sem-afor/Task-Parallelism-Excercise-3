@@ -35,7 +35,7 @@ namespace Task_Parallelism_Excercise_3
         }
 
 
-        static void mergesort(int[] myArray, int leftIndex, int rightIndex)
+        private void mergesort(int[] myArray, int leftIndex, int rightIndex)
         {
             if (leftIndex < rightIndex)
             {
@@ -46,7 +46,7 @@ namespace Task_Parallelism_Excercise_3
             }
         }
 
-        static void merge(int[] myArray, int leftIndex, int midIndex, int rightIndex)
+        private void merge(int[] myArray, int leftIndex, int midIndex, int rightIndex)
         {
             int leftArraySize = midIndex - leftIndex + 1;
             int rightArraySize = rightIndex - midIndex;

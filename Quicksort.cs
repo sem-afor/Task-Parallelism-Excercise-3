@@ -9,8 +9,10 @@ namespace Task_Parallelism_Excercise_3
 {
     internal class Quicksort
     {
-        internal Quicksort(int arraySize)
+        private readonly int maxParallelDepth;
+        internal Quicksort(int arraySize, int maxDepth)
         {
+            this.maxParallelDepth = maxDepth;
             int[] unsortedArray = new int[arraySize];
             Random random = new Random();
 
@@ -22,7 +24,7 @@ namespace Task_Parallelism_Excercise_3
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            quicksort(unsortedArray, 0, unsortedArray.Length - 1);
+            parallelQuicksort(unsortedArray, 0, unsortedArray.Length - 1,0);
             stopwatch.Stop();
 
             //Console.WriteLine($"Sorted array: [{string.Join(", ", unsortedArray)}]");
@@ -33,17 +35,45 @@ namespace Task_Parallelism_Excercise_3
             Console.WriteLine($"Quicksort took {elapsedMilliseconds} milliseconds ({elapsedSeconds} seconds) with size {arraySize}.");
 
         }
-        static void quicksort(int[] myArray, int leftIndex, int rightIndex)
+
+        private void parallelQuicksort(int[] myArray, int leftIndex, int rightIndex, int depth)
+        {
+            //if (leftIndex < rightIndex)
+            //{
+            //    int pivotIndex = sort(myArray, leftIndex, rightIndex);
+            //    var leftTask = Task.Run(() => quicksort(myArray, leftIndex, pivotIndex - 1));
+            //    var rightTask = Task.Run(() => quicksort(myArray, pivotIndex + 1, rightIndex));
+            //    Task.WhenAll(leftTask, rightTask).Wait();
+            //}
+
+            if (leftIndex < rightIndex)
+            {
+                if (depth < maxParallelDepth)
+                {
+                    int pivotIndex = sort(myArray, leftIndex, rightIndex);
+                    Parallel.Invoke(
+                        () => parallelQuicksort(myArray, leftIndex, pivotIndex - 1, depth + 1),
+                        () => parallelQuicksort(myArray, pivotIndex + 1, rightIndex, depth + 1)
+                    );
+                }
+                else
+                {
+                    sequentialQuicksort(myArray, leftIndex, rightIndex);
+                }
+            }
+        }
+
+        private void sequentialQuicksort(int[] myArray, int leftIndex, int rightIndex)
         {
             if (leftIndex < rightIndex)
             {
                 int pivotIndex = sort(myArray, leftIndex, rightIndex);
-                quicksort(myArray, leftIndex, pivotIndex - 1);
-                quicksort(myArray, pivotIndex + 1, rightIndex);
+                sequentialQuicksort(myArray, leftIndex, pivotIndex - 1);
+                sequentialQuicksort(myArray, pivotIndex + 1, rightIndex);
             }
         }
 
-        static int sort(int[] myArray, int leftIndex, int rightIndex)
+        private int sort(int[] myArray, int leftIndex, int rightIndex)
         {
             int pivotElement = myArray[rightIndex];
             int i = leftIndex - 1;
@@ -61,7 +91,7 @@ namespace Task_Parallelism_Excercise_3
             return i + 1;
         }
 
-        static void swapPlaces(int[] myArray, int i, int j)
+        private void swapPlaces(int[] myArray, int i, int j)
         {
             int temp = myArray[i];
             myArray[i] = myArray[j];

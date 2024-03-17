@@ -7,31 +7,43 @@ class Program
     static void Main()
     {
         // 1000000 bis 1400000
-        new Quicksort(1000000);
-        new Quicksort(1050000);
-        new Quicksort(1100000);
-        new Quicksort(1150000);
-        new Quicksort(1200000);
-        new Quicksort(1250000);
-        new Quicksort(1300000);
-        new Quicksort(1350000);
-        new Quicksort(1400000);
-        new Quicksort(1450000);
+        //new Quicksort(1000000);
+        //new Quicksort(1050000);
+        //new Quicksort(1100000);
+        //new Quicksort(1150000);
+        //new Quicksort(1200000);
+        //new Quicksort(1250000);
+        //new Quicksort(1300000);
+        //new Quicksort(1350000);
+        //new Quicksort(1400000);
+        //new Quicksort(1450000);
+
+        new Quicksort(1000000, 0);
+        new Quicksort(1000000, 1);
+        new Quicksort(1000000, 2);
+        new Quicksort(1000000, 3);
+        new Quicksort(1000000, 4);
+        new Quicksort(1000000, 5);
+        new Quicksort(1000000, 6);
+        new Quicksort(1000000, 7);
+        new Quicksort(1000000, 8);
+        new Quicksort(1000000, 9);
+        new Quicksort(1000000, 10);
 
 
         // 4500000 bis 9000000
-        new Mergesort(4500000);
-        new Mergesort(4550000);
-        new Mergesort(5500000);
-        new Mergesort(5550000);
-        new Mergesort(6500000);
-        new Mergesort(6550000);
-        new Mergesort(7500000);
-        new Mergesort(8550000);
-        new Mergesort(8500000);
-        new Mergesort(8550000);
-        new Mergesort(9000000);
-        new Mergesort(9050000);
+        //new Mergesort(4500000);
+        //new Mergesort(4550000);
+        //new Mergesort(5500000);
+        //new Mergesort(5550000);
+        //new Mergesort(6500000);
+        //new Mergesort(6550000);
+        //new Mergesort(7500000);
+        //new Mergesort(8550000);
+        //new Mergesort(8500000);
+        //new Mergesort(8550000);
+        //new Mergesort(9000000);
+        //new Mergesort(9050000);
 
 
     }
