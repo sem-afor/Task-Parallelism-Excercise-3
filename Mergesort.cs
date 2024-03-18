@@ -12,7 +12,7 @@ namespace Task_Parallelism_Excercise_3
         private readonly int maxParallelDepth;
         internal Mergesort(int arraySize, int maxDepth)
         {
-            maxParallelDepth = arraySize;
+            maxParallelDepth = maxDepth;
             int[] unsortedArray = new int[arraySize];
             Random random = new Random();
             for (int i = 0; i < arraySize; i++)
@@ -23,10 +23,9 @@ namespace Task_Parallelism_Excercise_3
 
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            parallelMergesort(unsortedArray, 0, unsortedArray.Length - 1,0);
+            parallelMergesort(unsortedArray, 0, unsortedArray.Length - 1, 0);
+            //sequentialMergesort(unsortedArray, 0, unsortedArray.Length - 1);
             stopwatch.Stop();
-
-            //Console.WriteLine($"Sorted array: [{string.Join(", ", unsortedArray)}]");
 
             long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
             double elapsedSeconds = stopwatch.Elapsed.TotalSeconds;
@@ -39,42 +38,43 @@ namespace Task_Parallelism_Excercise_3
 
         private void parallelMergesort(int[] myArray, int leftIndex, int rightIndex, int depth)
         {
+            // NAIVE
+            //if (leftIndex < rightIndex)
+            //{
+            //    int midIndex = (leftIndex + rightIndex) / 2;
+            //    Parallel.Invoke(
+            //        () => parallelMergesort(myArray, leftIndex, midIndex, 0),
+            //        () => parallelMergesort(myArray, midIndex + 1, rightIndex, 0)
+            //    );
+            //    merge(myArray, leftIndex, midIndex, rightIndex);
+            //}
+
             if (leftIndex < rightIndex)
             {
-                int midIndex = (leftIndex + rightIndex) / 2;
-                if(depth < maxParallelDepth)
+                
+                if (depth < maxParallelDepth)
                 {
+                    int midIndex = (leftIndex + rightIndex) / 2;
                     Parallel.Invoke(
                         () => parallelMergesort(myArray, leftIndex, midIndex, depth + 1),
                         () => parallelMergesort(myArray, midIndex + 1, rightIndex, depth + 1)
                     );
+                    merge(myArray, leftIndex, midIndex, rightIndex);
                 }
                 else
                 {
-                    mergesort(myArray, leftIndex, midIndex);
+                    sequentialMergesort(myArray, leftIndex, rightIndex);
                 }
-                merge(myArray, leftIndex, midIndex, rightIndex);
             }
         }
-        private void naiveParallelMergesort(int[] myArray, int leftIndex, int rightIndex)
-        {
-            if (leftIndex < rightIndex)
-            {
-                int midIndex = (leftIndex + rightIndex) / 2;              
-                Parallel.Invoke(
-                    () => naiveParallelMergesort(myArray, leftIndex, midIndex),
-                    () => naiveParallelMergesort(myArray, midIndex + 1, rightIndex)
-                );
-                merge(myArray, leftIndex, midIndex, rightIndex);
-            }
-        }
-        private void mergesort(int[] myArray, int leftIndex, int rightIndex)
+        
+        private void sequentialMergesort(int[] myArray, int leftIndex, int rightIndex)
         {
             if (leftIndex < rightIndex)
             {
                 int midIndex = (leftIndex + rightIndex) / 2;
-                mergesort(myArray, leftIndex, midIndex);
-                mergesort(myArray, midIndex + 1, rightIndex);
+                sequentialMergesort(myArray, leftIndex, midIndex);
+                sequentialMergesort(myArray, midIndex + 1, rightIndex);
                 merge(myArray, leftIndex, midIndex, rightIndex);
             }
         }

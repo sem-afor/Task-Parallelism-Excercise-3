@@ -15,8 +15,6 @@ namespace Task_Parallelism_Excercise_3
             maxParallelDepth = maxDepth;
             int[] unsortedArray = new int[arraySize];
             Random random = new Random();
-
-            // Generate random integers and populate the array
             for (int i = 0; i < arraySize; i++)
             {
                 unsortedArray[i] = random.Next(0, 1000);
@@ -26,8 +24,6 @@ namespace Task_Parallelism_Excercise_3
             stopwatch.Start();
             parallelQuicksort(unsortedArray, 0, unsortedArray.Length - 1,0);
             stopwatch.Stop();
-
-            //Console.WriteLine($"Sorted array: [{string.Join(", ", unsortedArray)}]");
 
             long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
             double elapsedSeconds = stopwatch.Elapsed.TotalSeconds;
