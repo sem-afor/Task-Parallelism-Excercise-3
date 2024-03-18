@@ -34,6 +34,7 @@ namespace Task_Parallelism_Excercise_3
 
         private void parallelQuicksort(int[] myArray, int leftIndex, int rightIndex, int depth)
         {
+            // NAIVE
             //if (leftIndex < rightIndex)
             //{
             //    int pivotIndex = sort(myArray, leftIndex, rightIndex);
