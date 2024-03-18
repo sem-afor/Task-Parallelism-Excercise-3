@@ -18,19 +18,19 @@ class Program
         //new Quicksort(1400000);
         //new Quicksort(1450000);
 
-        new Quicksort(1000000, 0);
-        new Quicksort(1000000, 1);
-        new Quicksort(1000000, 2);
-        new Quicksort(1000000, 3);
-        new Quicksort(1000000, 4);
-        new Quicksort(1000000, 5);
+        new Quicksort(1000000,0);
+        new Mergesort(1000000,0);
+        /*new Mergesort(1000000);
+        new Mergesort(1000000);
+        new Mergesort(1000000);
+        new Mergesort(1000000);
 
-        new Quicksort(1400000, 0);
-        new Quicksort(1400000, 1);
-        new Quicksort(1400000, 2);
-        new Quicksort(1400000, 3);
-        new Quicksort(1400000, 4);
-        new Quicksort(1400000, 5);
+        new Mergesort(1400000);
+        new Mergesort(1400000);
+        new Mergesort(1400000);
+        new Mergesort(1400000);
+        new Mergesort(1400000);
+        new Mergesort(1400000);*/
 
 
         // 4500000 bis 9000000
