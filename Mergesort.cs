@@ -30,9 +30,9 @@ namespace Task_Parallelism_Excercise_3
             long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
             double elapsedSeconds = stopwatch.Elapsed.TotalSeconds;
 
-            Console.WriteLine($"Mergesort took {elapsedMilliseconds} milliseconds ({elapsedSeconds} seconds) with size {arraySize}.");
+            Console.WriteLine($"Mergesort took {elapsedMilliseconds} milliseconds ({elapsedSeconds} seconds) with size size {arraySize} and max dept {maxParallelDepth}.");
 
-            
+
         }
 
 
