@@ -34,15 +34,6 @@ namespace Task_Parallelism_Excercise_3
 
         private void parallelQuicksort(int[] myArray, int leftIndex, int rightIndex, int depth)
         {
-            // NAIVE
-            //if (leftIndex < rightIndex)
-            //{
-            //    int pivotIndex = sort(myArray, leftIndex, rightIndex);
-            //    var leftTask = Task.Run(() => quicksort(myArray, leftIndex, pivotIndex - 1));
-            //    var rightTask = Task.Run(() => quicksort(myArray, pivotIndex + 1, rightIndex));
-            //    Task.WhenAll(leftTask, rightTask).Wait();
-            //}
-
             if (leftIndex < rightIndex)
             {
                 if (depth < maxParallelDepth)

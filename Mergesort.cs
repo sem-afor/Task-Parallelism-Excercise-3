@@ -24,7 +24,6 @@ namespace Task_Parallelism_Excercise_3
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
             parallelMergesort(unsortedArray, 0, unsortedArray.Length - 1, 0);
-            //sequentialMergesort(unsortedArray, 0, unsortedArray.Length - 1);
             stopwatch.Stop();
 
             long elapsedMilliseconds = stopwatch.ElapsedMilliseconds;
@@ -38,17 +37,6 @@ namespace Task_Parallelism_Excercise_3
 
         private void parallelMergesort(int[] myArray, int leftIndex, int rightIndex, int depth)
         {
-            // NAIVE
-            //if (leftIndex < rightIndex)
-            //{
-            //    int midIndex = (leftIndex + rightIndex) / 2;
-            //    Parallel.Invoke(
-            //        () => parallelMergesort(myArray, leftIndex, midIndex, 0),
-            //        () => parallelMergesort(myArray, midIndex + 1, rightIndex, 0)
-            //    );
-            //    merge(myArray, leftIndex, midIndex, rightIndex);
-            //}
-
             if (leftIndex < rightIndex)
             {
                 

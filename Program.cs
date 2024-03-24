@@ -22,7 +22,6 @@ class Program
         new Quicksort(1400000, dept);
         new Quicksort(1450000, dept);
 
-        // good nubmers between 10 and 20? check
         // 4500000 bis 9000000
         //new Mergesort(4500000, 7);
         new Mergesort(4500000, dept);
@@ -37,16 +36,6 @@ class Program
         new Mergesort(8550000, dept);
         new Mergesort(9000000, dept);
         new Mergesort(9050000, dept);
-
-        //new Mergesort(4500000, 4500000);
-        //new Mergesort(4550000, 4550000);
-
-        //new Quicksort(1000000, 1000000);
-        //new Quicksort(1050000, 1050000);
-
-
-
-
 
     }
 }
